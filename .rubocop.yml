@@ -5,8 +5,11 @@ require:
 AllCops:
   TargetRubyVersion: 2.6
   Exclude:
+    - 'node_modules/**/*'
+    - 'vendor/**/*'
+    - '.git/**/*'
     - 'db/schema.rb'
-    - 'vendor/bundle'
+    - 'db/migrate/**/*'
 
 
 Performance:
