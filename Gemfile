@@ -50,6 +50,8 @@ end
 
 group :development do
   gem 'guard'
+  gem 'guard-rspec'
+  gem 'guard-rubocop'
   gem 'listen', '>= 3.0.5', '< 3.2'
   gem 'rubocop-performance'
   gem 'rubocop-rails'

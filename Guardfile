@@ -17,8 +17,10 @@
 #
 # and, you'll have to watch "config/Guardfile" instead of "Guardfile"
 
-group :red_green_refactor, halt_on_fail: true do
-  group :specs, cmd: 'bundle exec rspec' do
+scope(groups: %w[specs])
+
+group :specs, halt_on_fail: true do
+  guard :rspec, cmd: 'bundle exec rspec', failed_mode: :keep do
     watch('spec/spec_helper.rb')                        { 'spec' }
     watch('config/routes.rb')                           { ['spec/routing', 'spec/controllers'] }
     watch('app/controllers/application_controller.rb')  { 'spec/controllers' }
@@ -29,7 +31,7 @@ group :red_green_refactor, halt_on_fail: true do
     watch(%r{^app/controllers/(.+)_(controller)\.rb$})  { |m| ["spec/routing/#{m[1]}_routing_spec.rb", "spec/#{m[2]}s/#{m[1]}_#{m[2]}_spec.rb", "spec/acceptance/#{m[1]}_spec.rb"] }
   end
 
-  group :rubocop, cmd: 'bundle exec rubocop' do
+  guard :rubocop, cmd: 'bundle exec rubocop' do
     watch(/^(.+)\.rb$/)
   end
 end
