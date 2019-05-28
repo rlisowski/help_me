@@ -9,8 +9,13 @@ jobs:
           BUNDLE_JOBS: 3
           BUNDLE_RETRY: 3
           BUNDLE_PATH: vendor/bundle
+          RAILS_ENV: test
+          DATABASE_URL: postgresql://help_me:help_me@127.0.0.1:5432/help_me_test
 
       - image: circleci/postgres:9.5
+          POSTGRES_DB: help_me_test
+          POSTGRES_USER: help_me
+          POSTGRES_PASSWORD: help_me
 
     steps:
       - checkout
