@@ -18,7 +18,9 @@ jobs:
       # Which version of bundler?
       - run:
           name: Which bundler?
-          command: bundle -v
+          command: |
+            gem install bundler
+            bundle -v
 
       # Restore bundle cache
       - restore_cache:
