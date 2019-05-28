@@ -4,19 +4,14 @@ jobs:
   build:
     parallelism: 1
     docker:
-      - image: circleci/ruby:2.6.3-jessie-node
+      - image: circleci/ruby:2.6.3-node-browsers
         environment:
           BUNDLE_JOBS: 3
           BUNDLE_RETRY: 3
           BUNDLE_PATH: vendor/bundle
-          PGHOST: 127.0.0.1
-          PGUSER: postgres
-          RAILS_ENV: test
-      - image: circleci/postgres:9.5-alpine
-        environment:
-          POSTGRES_USER: postgres
-          POSTGRES_DB: help_me_test
-          POSTGRES_PASSWORD: ""
+
+      - image: circleci/postgres:9.5
+
     steps:
       - checkout
 
@@ -28,24 +23,25 @@ jobs:
       # Restore bundle cache
       - restore_cache:
           keys:
-            - rails-demo-bundle-v2-{{ checksum "Gemfile.lock" }}
-            - rails-demo-bundle-v2-
+            - bundle-v2-{{ checksum "Gemfile.lock" }}
+            - bundle-v2-
 
       - run:
           name: Bundle Install
-          command: bundle check || bundle install
+          command: bundle check || bundle install --jobs=4 --retry=3 --path vendor/bundle
+
 
       # Store bundle cache
       - save_cache:
-          key: rails-demo-bundle-v2-{{ checksum "Gemfile.lock" }}
+          key: bundle-v2-{{ checksum "Gemfile.lock" }}
           paths:
             - vendor/bundle
 
       # Only necessary if app uses webpacker or yarn in some other way
       - restore_cache:
           keys:
-            - rails-demo-yarn-{{ checksum "yarn.lock" }}
-            - rails-demo-yarn-
+            - yarn-{{ checksum "yarn.lock" }}
+            - yarn-
 
       - run:
           name: Yarn Install
@@ -53,27 +49,35 @@ jobs:
 
       # Store yarn / webpacker cache
       - save_cache:
-          key: rails-demo-yarn-{{ checksum "yarn.lock" }}
+          key: yarn-{{ checksum "yarn.lock" }}
           paths:
             - ~/.cache/yarn
 
       - run:
-          name: Wait for DB
-          command: dockerize -wait tcp://localhost:5432 -timeout 1m
+          name: Database setup
+          command: bin/rails db:create --trace
 
       - run:
           name: Database setup
           command: bin/rails db:schema:load --trace
 
-      # Run rspec in parallel
+      # run tests!
       - run:
-          name: Run rspec in parallel
+          name: run tests
           command: |
-            bundle exec rspec --profile 10 \
-                              --format RspecJunitFormatter \
-                              --out test_results/rspec.xml \
-                              --format progress \
-                              $(circleci tests glob "spec/**/*_spec.rb" | circleci tests split --split-by=timings)
+            mkdir /tmp/test-results
+            touch /tmp/test-results/rspec.xml
+
+            TEST_FILES="$(circleci tests glob "spec/**/*_spec.rb" | \
+              circleci tests split --split-by=timings)"
+
+            bundle exec rspec \
+              --format progress \
+              --format RspecJunitFormatter \
+              --out /tmp/test-results/rspec.xml \
+              --format progress \
+              $TEST_FILES
+
       - run:
           name: Run rubocop
           command: |
