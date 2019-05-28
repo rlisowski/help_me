@@ -1,0 +1,26 @@
+require:
+  - rubocop-rails
+  - rubocop-performance
+
+AllCops:
+  TargetRubyVersion: 2.6
+
+
+Performance:
+  Exclude:
+    - 'spec/**/*'
+
+Rails:
+  Enabled: true
+
+Metrics/LineLength:
+  Max: 120
+  Exclude:
+    - 'Guardfile'
+
+Style/Documentation:
+  Enabled: false
+
+Style/MixinUsage:
+  Exclude:
+    - 'bin/*'
