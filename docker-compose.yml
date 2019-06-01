@@ -15,7 +15,7 @@ services:
     volumes:
       - .:/help_me
     ports:
-      - "3000:3000"
+      - "4000:3000"
     depends_on:
       - db
 
