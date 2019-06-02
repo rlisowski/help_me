@@ -1,24 +1,7 @@
-# README
+# Help Me
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+**_Help Me_** app helps build a knowledge base in English and automatically translate it to German.
 
-Things you may want to cover:
+## Development
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Install [Docker](https://www.docker.com/) and execute `$ docker-compose up` in terminal emulator to run the app locally. Visit http://localhost:4000 to see it.
