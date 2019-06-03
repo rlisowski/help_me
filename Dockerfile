@@ -1,5 +1,9 @@
 FROM ruby:2.6.3
-RUN apt-get update -qq && apt-get install -y nodejs postgresql-client
+RUN apt-get update -qq \
+    && apt-get install -y postgresql-client
+# https://github.com/nodesource/distributions#installation-instructions
+RUN curl -sL https://deb.nodesource.com/setup_10.x | bash - \
+    && apt-get install -y nodejs
 RUN gem install bundler
 RUN mkdir /help_me
 WORKDIR /help_me
