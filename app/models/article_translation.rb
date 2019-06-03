@@ -5,7 +5,7 @@ class ArticleTranslation < ApplicationRecord
 
   enum lang: %i[en de]
 
-  validates :question, :answer, length: { maximum: 256 }
+  validates :question, :answer, length: { maximum: 512 }
   validates :question, :answer, presence: { if: :en? }
   validates :lang, uniqueness: { scope: :article_id }
 

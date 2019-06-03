@@ -1,0 +1,12 @@
+<li id="<%= dom_id(article) %>" class="accordion-item" data-accordion-item>
+  <% article.article_translations.each do |translation| %>
+    <a href="#" class="accordion-title">
+      <strong>
+        <%= translation.question %>
+      </strong>
+    </a>
+    <div class="accordion-content" data-tab-content >
+      <p><%= translation.answer %></p>
+    </div>
+  <% end %>
+</li>
