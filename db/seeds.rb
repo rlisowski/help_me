@@ -19,13 +19,16 @@ faq = [
   'I usually don\'t but this time I decided to isolate the dev environment.',
 
   'Why an asynchronous worker translates to German in the background?',
-  'The translation is done automatically by external service. I want to keep the app up and running even if the service is down or the quota is exceeded.',
+  'The translation is done automatically by external service.
+   I want to keep the app up and running even if the service is down or the quota is exceeded.',
 
   'Why the length of questions and answers is limited?',
-  'I\'m using a free version of [Translator Text API](https://azure.microsoft.com/en-us/services/cognitive-services/translator-text-api/). I didn\'t want to hit quota too early.',
+  'I\'m using a free version of Translator Text API. I didn\'t want to hit quota too early.',
 
   'Why UUIDs?',
-  'In task description is written than I should assume high traffic. In such scenario it\'s very likely that you have HA architecture like master-master synchronization. UUIDs generates less collisions than standard numeric primary keys so that synchronization would be easier.',
+  'In task description is written than I should assume high traffic.
+   In such scenario it\'s very likely that you have HA architecture like master-master synchronization.
+   UUIDs generates less collisions than standard numeric primary keys so that synchronization would be easier.',
 
   'Why there is FactoryBot?',
   'FactoryBot is very popular and it makes life so much easier.',
@@ -34,7 +37,9 @@ faq = [
   'I used to use slim or haml but also I try to keep things simple. This is true especially for small projects.',
 
   'Why Zurb Foundaiton and not Twitter Bootstrap?',
-  'For me it\'s equally evil. I needed something tham makes site "prettier" and in my opinion, Zurb Foundaiton is easier to set up and remove later.'
+  'For me it\'s equally evil.
+   I needed something tham makes site "prettier" and in my opinion,
+   Zurb Foundaiton is easier to set up and remove later.'
 ]
 
 faq.each_slice(2) do |question, answer|
