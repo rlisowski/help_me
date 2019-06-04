@@ -3,16 +3,17 @@
 require 'rails_helper'
 
 RSpec.describe ArticlesQuery do
+  let!(:article) { create(:article) }
   let!(:en_article) do
-    create(:article_translation, lang: :en).article
+    create(:article_translation, lang: :en, article: article)
   end
   let!(:de_article) do
-    create(:article_translation, lang: :de).article
+    create(:article_translation, lang: :de, article: article)
   end
 
   it 'fetches translations' do
-    articles = ArticlesQuery.new.call
-    expect(articles.first).to eq(en_article)
-    expect(articles.last).to eq(de_article)
+    translations = ArticlesQuery.new.call.first.article_translations
+    expect(translations.first).to eq(en_article)
+    expect(translations.last).to eq(de_article)
   end
 end
