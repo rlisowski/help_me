@@ -2,7 +2,6 @@
 
 class ArticlesController < ApplicationController
   def index
-    selected_lang = params[:lang] || 'en'
-    @articles = Article.includes(:article_translations).where(article_translations: { lang: selected_lang })
+    @articles = ArticlesQuery.new.call
   end
 end

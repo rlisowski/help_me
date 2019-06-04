@@ -1,9 +1,5 @@
+<% selected_lang = params[:lang] %>
+
 <div class="grid-container">
-  <div class="grid-x">
-    <div class="cell small-12">
-      <ul class="accordion" data-accordion>
-        <%= render @articles %>
-      </ul>
-    </div>
-  </div>
+  <%= render @articles %>
 </div>

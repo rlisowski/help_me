@@ -23,7 +23,8 @@ faq = [
    I want to keep the app up and running even if the service is down or the quota is exceeded.',
 
   'Why the length of questions and answers is limited?',
-  'I\'m using a free version of Translator Text API. I didn\'t want to hit quota too early.',
+  'I\'m using a free version of [Translator Text API](https://azure.microsoft.com/en-us/services/cognitive-services/translator-text-api/).
+   I didn\'t want to hit quota too early.',
 
   'Why UUIDs?',
   'In task description is written than I should assume high traffic.
@@ -38,17 +39,23 @@ faq = [
 
   'Why Zurb Foundaiton and not Twitter Bootstrap?',
   'For me it\'s equally evil.
-   I needed something tham makes site "prettier" and in my opinion,
+   I needed something that makes site "prettier" and in my opinion,
    Zurb Foundaiton is easier to set up and remove later.'
 ]
 
-faq.each_slice(2) do |question, answer|
+faq.each_slice(2) do |question, formatted_answer|
+  print '.'
   Article.transaction do
+    answer = formatted_answer.gsub(/\s+/, ' ')
     article = Article.create!
     ArticleTranslation.create!(article: article,
                                lang: :en,
                                question: question,
                                answer: answer)
+    ArticleTranslation.create!(article: article,
+                               lang: :de,
+                               question: 'Übersetzung in Bearbeitung',
+                               answer: 'Übersetzung in Bearbeitung')
     faq_file.write "* Q: #{question}\n"
     faq_file.write "* A: #{answer}\n"
     faq_file.write "\n\n"
