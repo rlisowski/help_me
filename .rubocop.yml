@@ -24,6 +24,9 @@ Metrics/LineLength:
   Exclude:
     - 'Guardfile'
 
+Metrics/MethodLength:
+  Max: 15
+
 Style/Documentation:
   Enabled: false
 

@@ -10,6 +10,7 @@ RSpec.describe 'articles/index.html.erb', type: :view do
     ]
 
     assign(:articles, articles)
+    assign(:article_translation, ArticleTranslation.new)
 
     render
 

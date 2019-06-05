@@ -1,0 +1,20 @@
+<% if @article.persisted? %>
+  // prepend new article
+  var articles = document.getElementById("articles");
+  var template = document.createElement('template');
+  template.innerHTML = "<%= j render @article %>";
+  articles.insertBefore(template.content.firstChild, articles.firstChild);
+
+  // empty form
+  <% article = ArticleTranslation.new %>
+  var form = document.getElementById("<%= dom_id(article, 'create_form') %>");
+  var new_form = document.createElement("div");
+  new_form.innerHTML = "<%= j render 'form', article: article %>";
+  form.innerHTML = new_form.firstChild.innerHTML;
+<% else %>
+  // display errors
+  var form = document.getElementById("<%= dom_id(@article_translation, 'create_form') %>");
+  var new_form = document.createElement("div");
+  new_form.innerHTML = "<%= j render 'form', article: @article_translation %>";
+  form.innerHTML = new_form.firstChild.innerHTML;
+<% end %>
