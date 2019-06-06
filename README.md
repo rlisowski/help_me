@@ -1,6 +1,6 @@
 # Help Me
 
-**_Help Me_** app helps build a knowledge base in English and automatically translate it to German.
+**_Help Me_** app helps build a knowledge base in English and automatically translate it to German. To see the demo, visit [https://help-me-demo.herokuapp.com/](https://help-me-demo.herokuapp.com/).
 
 ![Help Me app screenshot](doc/Help_Me.jpg)
 
