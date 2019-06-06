@@ -18,6 +18,10 @@ Install [Docker](https://www.docker.com/) and execute `$ MICROSOFT_TRANSLATOR_AP
 `$ brew install postgresql`
 `$ brew install redis`
 
+#### Create an account on MicrosoftAzure
+
+Visit [https://azure.microsoft.com/en-us/services/cognitive-services/translator-text-api/](https://azure.microsoft.com/en-us/services/cognitive-services/translator-text-api/) create an account and get the Translator Text API key. Set it in the environment variable `MICROSOFT_TRANSLATOR_API_KEY` or provide it in-line before every command.
+
 #### Setup the application
 
 `$ MICROSOFT_TRANSLATOR_API_KEY='KEY' bundle exec bin/setup`
