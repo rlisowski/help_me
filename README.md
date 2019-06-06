@@ -32,4 +32,4 @@ Visit [https://azure.microsoft.com/en-us/services/cognitive-services/translator-
 
 ### Application architecture
 
-![[architecture](https://whimsical.com/Y3Wjjz9XDhZRoFJAEgnWh3)](doc/Architecture.jpg)
+[![architecture](doc/Architecture.jpg)](https://whimsical.com/Y3Wjjz9XDhZRoFJAEgnWh3)
