@@ -29,3 +29,7 @@ Visit [https://azure.microsoft.com/en-us/services/cognitive-services/translator-
 #### Run the application
 
 `$ MICROSOFT_TRANSLATOR_API_KEY='KEY' bundle exec rails server`
+
+### Application architecture
+
+![[architecture](https://whimsical.com/Y3Wjjz9XDhZRoFJAEgnWh3)](doc/Architecture.jpg)
