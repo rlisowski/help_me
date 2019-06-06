@@ -56,6 +56,8 @@ faq.each_slice(2) do |question, formatted_answer|
                                lang: :de,
                                question: 'Übersetzung in Bearbeitung',
                                answer: 'Übersetzung in Bearbeitung')
+
+    TranslateArticleJob.perform_now(article.id)
     faq_file.write "* Q: #{question}\n"
     faq_file.write "* A: #{answer}\n"
     faq_file.write "\n\n"

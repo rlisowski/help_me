@@ -1,0 +1,103 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api-eur.cognitive.microsofttranslator.com/translate?api-version=3.0&to=de
+    body:
+      encoding: UTF-8
+      string: '[{"Text":"Est est ut et."}]'
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - api-eur.cognitive.microsofttranslator.com
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '27'
+      Ocp-Apim-Subscription-Key:
+      - NOPE
+      X-Clienttraceid:
+      - c677c6c8-1faa-4f58-9db6-c9dc51fb2735
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      X-Mt-System:
+      - Microsoft
+      X-Requestid:
+      - TRAN.13B3.AA50E023
+      Access-Control-Expose-Headers:
+      - X-RequestId
+      X-Content-Type-Options:
+      - nosniff
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      Date:
+      - Thu, 06 Jun 2019 09:51:33 GMT
+      Content-Length:
+      - '106'
+    body:
+      encoding: UTF-8
+      string: '[{"detectedLanguage":{"language":"fr","score":1.0},"translations":[{"text":"Ost
+        ist UT und.","to":"de"}]}]'
+    http_version:
+  recorded_at: Thu, 06 Jun 2019 09:51:33 GMT
+- request:
+    method: post
+    uri: https://api-eur.cognitive.microsofttranslator.com/translate?api-version=3.0&to=de
+    body:
+      encoding: UTF-8
+      string: '[{"Text":"Similique eaque aut officiis."}]'
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - api-eur.cognitive.microsofttranslator.com
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '42'
+      Ocp-Apim-Subscription-Key:
+      - NOPE
+      X-Clienttraceid:
+      - 22863905-822e-4ea7-b836-707671154fb6
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      X-Mt-System:
+      - Microsoft
+      X-Requestid:
+      - TRAN.13B3.DF68E70F
+      Access-Control-Expose-Headers:
+      - X-RequestId
+      X-Content-Type-Options:
+      - nosniff
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      Date:
+      - Thu, 06 Jun 2019 09:51:34 GMT
+      Content-Length:
+      - '123'
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        W3siZGV0ZWN0ZWRMYW5ndWFnZSI6eyJsYW5ndWFnZSI6ImZyIiwic2NvcmUiOjAuNX0sInRyYW5zbGF0aW9ucyI6W3sidGV4dCI6IkRhcyBpc3QgZWluIMOkaG5saWNoZXMgRXJlaWduaXMuIiwidG8iOiJkZSJ9XX1d
+    http_version:
+  recorded_at: Thu, 06 Jun 2019 09:51:33 GMT
+recorded_with: VCR 5.0.0

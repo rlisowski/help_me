@@ -42,7 +42,10 @@ class ArticlesController < ApplicationController
   def create_article
     @article = Article.new
     @article_translation = @article.article_translations.build(article_params.merge(lang: :en))
-    create_empty_german_translation if @article.save
+    return unless @article.save
+
+    create_empty_german_translation
+    TranslateArticleJob.perform_later(@article.id)
   end
 
   def article_params
