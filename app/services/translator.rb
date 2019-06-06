@@ -6,6 +6,7 @@ class Translator
       question: translate(article_en.question),
       answer: translate(article_en.answer)
     )
+    ArticlesChannel.broadcast_to('articles', article_id: article_id)
   end
 
   private

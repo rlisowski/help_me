@@ -35,5 +35,7 @@ module HelpMe
     config.generators do |generator|
       generator.orm :active_record, primary_key_type: :uuid
     end
+
+    config.action_cable.mount_path = '/cable'
   end
 end

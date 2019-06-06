@@ -37,6 +37,12 @@ class ArticlesController < ApplicationController
     end
   end
 
+  def show
+    @article = Article.find(params[:id])
+
+    render layout: !request.xhr?
+  end
+
   private
 
   def create_article
