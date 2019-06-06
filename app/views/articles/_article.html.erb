@@ -1,4 +1,10 @@
-<div id="<%= dom_id(article) %>" class="grid-x grid-padding-x">
+<div id="<%= dom_id(article) %>" class="grid-x grid-padding-x article">
+  <div class="article__actions">
+    <%= link_to article, method: :delete, remote: true, data: { confirm: 'Are you sure?' } do %>
+      <i class="fi-trash action action--danger"></i>
+    <% end %>
+  </div>
+
   <% article.article_translations.each do |translation| %>
     <div class="cell small-12 medium-6">
       <div class="card">

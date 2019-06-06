@@ -2,7 +2,9 @@
 
 class ArticlesQuery
   def call
-    initial_scope.includes(:article_translations)
+    initial_scope
+      .includes(:article_translations)
+      .order(created_at: :desc)
   end
 
   private

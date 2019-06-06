@@ -25,6 +25,18 @@ class ArticlesController < ApplicationController
     end
   end
 
+  def destroy
+    @article = Article.find(params[:id])
+    @article.destroy
+
+    respond_to do |format|
+      format.html do
+        redirect_to articles_path, notice: 'Article was successfully removed.'
+      end
+      format.js {}
+    end
+  end
+
   private
 
   def create_article

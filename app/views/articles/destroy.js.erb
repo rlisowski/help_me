@@ -1,0 +1,6 @@
+var article = document.getElementById("<%= dom_id(@article) %>");
+article.classList.add("article--deleted");
+
+setTimeout(function(){
+  article.parentNode.removeChild(article);
+}, 210)

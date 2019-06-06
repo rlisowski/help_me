@@ -1,0 +1,22 @@
+@import 'settings';
+
+.article {
+  position: relative;
+  padding-top: 3 * $global-padding;
+  border-top: 1px solid $black;
+  transition: opacity .2s linear;
+
+  @media screen and (max-width: 39.9375em) {
+    padding-top: 4 * $global-padding;
+  }
+
+  &--deleted {
+    opacity: 0;
+  }
+
+  &__actions {
+    position: absolute;
+    top: $global-padding;
+    right: $global-padding;
+  }
+}

@@ -38,4 +38,18 @@ RSpec.describe ArticlesController, type: :controller do
       expect(response).to have_http_status(:success)
     end
   end
+
+  describe 'DELETE #destroy' do
+    let!(:article) { create(:article_translation, lang: :en).article }
+
+    it 'returns http success' do
+      expect do
+        expect do
+          get :destroy, params: { id: article.id }
+        end.to change(ArticleTranslation, :count).by(-1)
+      end.to change(Article, :count).by(-1)
+
+      expect(response).to have_http_status(:redirect)
+    end
+  end
 end
