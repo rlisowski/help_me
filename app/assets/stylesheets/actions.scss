@@ -7,6 +7,10 @@
     font-size: $global-font-size * 1.5;
   }
 
+  &:hover {
+    color: map-get($foundation-palette, "primary");
+  }
+
   &--danger {
     color: map-get($foundation-palette, "alert");
   }

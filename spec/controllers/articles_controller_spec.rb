@@ -39,6 +39,33 @@ RSpec.describe ArticlesController, type: :controller do
     end
   end
 
+  describe 'PATCH #update' do
+    let!(:article) { create(:article) }
+    let!(:en_article) do
+      create(:article_translation,
+             lang: :en,
+             article: article,
+             question: 'Why?',
+             answer: 'For fun!')
+    end
+
+    it 'updates the article' do
+      patch :update, params: { id: article.id, article_translation: { question: 'Doh?', answer: ':)' } }
+
+      expect(response).to have_http_status(:redirect)
+
+      en_article.reload
+      expect(en_article.question).to eq('Doh?')
+      expect(en_article.answer).to eq(':)')
+    end
+
+    it 'complains about missing attribute' do
+      patch :create, params: { id: article.id, article_translation: { question: '', answer: '' } }
+
+      expect(response).to have_http_status(:unprocessable_entity)
+    end
+  end
+
   describe 'DELETE #destroy' do
     let!(:article) { create(:article_translation, lang: :en).article }
 

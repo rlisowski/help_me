@@ -10,6 +10,17 @@ class ArticlesController < ApplicationController
     @article_translation = Article.find(params[:id]).article_translations.find_by(lang: :en)
   end
 
+  def update
+    article = Article.find(params[:id])
+    @article_translation = article.article_translations.find_by(lang: :en)
+    if @article_translation.update(article_params)
+      TranslateArticleJob.set(wait: 3.seconds).perform_later(article.id)
+      redirect_to articles_path, notice: 'Article was successfully updated.'
+    else
+      render :edit, status: :unprocessable_entity
+    end
+  end
+
   def create
     create_article
 

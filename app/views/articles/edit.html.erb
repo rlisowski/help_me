@@ -1,1 +1,46 @@
-<%= render 'form', article: @article_translation %>
+<% article = @article_translation %>
+<%= form_with model: article, url: article_path, id: dom_id(article, 'create_form'), local: article.persisted? do |form| %>
+  <div class="grid-container">
+    <div class="grid-x grid-padding-x">
+      <div class="small-12 cell">
+        <fieldset class="fieldset">
+          <legend>Add new article in English:</legend>
+          <div class="grid-container">
+            <div class="grid-x grid-padding-x">
+              <div class="small-12 cell">
+                <label class="<%= article.errors[:question].present? && 'is-invalid-label' %>">Question
+                  <%= form.text_field :question %>
+                  <% if article.errors[:question].present? %>
+                    <span class="form-error is-visible" role="alert">
+                      <%= article.errors[:question].to_sentence %>
+                    </span>
+                  <% end %>
+                </label>
+              </div>
+            </div>
+
+            <div class="grid-x grid-padding-x">
+              <div class="small-12 cell">
+                <label class="<%= article.errors[:answer].present? && 'is-invalid-label' %>">Answer
+                  <%= form.text_area :answer %>
+                  <% if article.errors[:answer].present? %>
+                    <span class="form-error is-visible" role="alert">
+                      <%= article.errors[:answer].to_sentence %>
+                    </span>
+                  <% end %>
+                </label>
+              </div>
+            </div>
+
+            <div class="grid-x grid-padding-x">
+              <div class="small-12 cell">
+                <%= link_to 'Cancel', articles_path, class: 'button secondary' %>
+                <input type="submit" class="button float-right" value="Update">
+              </div>
+            </div>
+          </div>
+        </fieldset>
+      </div>
+    </div>
+  </div>
+<% end %>

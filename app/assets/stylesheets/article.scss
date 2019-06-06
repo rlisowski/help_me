@@ -18,5 +18,13 @@
     position: absolute;
     top: $global-padding;
     right: $global-padding;
+
+    a + a {
+      margin-left: .5 * $global-margin;
+
+      @media screen and (max-width: 39.9375em) {
+        margin-left: $global-margin;
+      }
+    }
   }
 }
